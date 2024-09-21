@@ -5,8 +5,7 @@ phases:
     commands:
       - echo Installing dependencies...
       - curl -sS https://getcomposer.org/installer -o composer-installer.php
-      - php composer-installer.php --install-dir=/usr/local/bin --filename=composer
-      - composer install
+     
 
   build:
     commands:
