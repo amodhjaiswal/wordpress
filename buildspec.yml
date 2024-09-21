@@ -2,8 +2,6 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      php: 8.0
     commands:
       - echo Installing Composer...
       - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -32,6 +30,11 @@ artifacts:
   files:
     - wordpress-build.zip
   discard-paths: yes
+
+cache:
+  paths:
+    - vendor/**
+
 
 cache:
   paths:
