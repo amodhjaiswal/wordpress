@@ -2,49 +2,19 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      php: 7.4
     commands:
-      - echo Installing Composer...
-      - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-      - echo Checking Composer version...
-      - composer --version
-      - echo Updating Composer...
-      - composer self-update
-      - echo Clearing Composer cache...
-      - composer clear-cache
-      - echo Installing WordPress dependencies...
-      - composer install --verbose
-
-  pre_build:
-    commands:
-      - echo Running pre-build checks...
-      - echo Checking PHP version...
-      - php -v
-      - echo Checking PHP extensions...
-      - php -m
-
+      - echo Installing dependencies...
+      
   build:
     commands:
-      - echo Starting build process...
-      - echo Copying WordPress files...
-      - cp -r * /path/to/your/build/directory
-      - echo Build completed successfully.
-
+      - echo Building the WordPress application...
   post_build:
     commands:
-      - echo Build completed. Preparing for deployment...
-      - zip -r wordpress-build.zip /path/to/your/build/directory
-
+      - echo Build completed on `date`
 artifacts:
   files:
-    - wordpress-build.zip
-  discard-paths: yes
-
-cache:
-  paths:
-    - vendor/**
-
-
-cache:
-  paths:
-    - vendor/**
+    - '**/*'
+  base-directory: '.'  # Adjust this if your files are in a subdirectory
 
