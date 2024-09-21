@@ -2,9 +2,13 @@ version: 0.2
 
 phases:
   install:
-  commands:
+    runtime-versions:
+      php: 7.4
+    commands:
       - echo Installing dependencies...
-      
+      # If you have Composer dependencies
+      - curl -sS https://getcomposer.org/installer | php
+      - php composer.phar install
   build:
     commands:
       - echo Building the WordPress application...
