@@ -5,8 +5,10 @@ phases:
     commands:
       - echo Installing Composer...
       - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+      - echo Checking Composer version...
+      - composer --version
       - echo Installing WordPress dependencies...
-      - composer install
+      - COMPOSER_MEMORY_LIMIT=-1 composer install --verbose
 
   pre_build:
     commands:
@@ -30,11 +32,6 @@ artifacts:
   files:
     - wordpress-build.zip
   discard-paths: yes
-
-cache:
-  paths:
-    - vendor/**
-
 
 cache:
   paths:
