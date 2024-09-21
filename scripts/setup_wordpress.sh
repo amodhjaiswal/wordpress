@@ -42,14 +42,16 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
   cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
   
   # Set your database details
-  DB_NAME='amodh'
-  DB_USER='admin'
+  DB_NAME='magentoj'
+  DB_USER='amodhjaiswal'
   DB_PASSWORD='Amodh1234'
+  DB_HOST='amodh.c76e480e49bk.ap-southeast-2.rds.amazonaws.com'
 
   # Update wp-config.php with the database details
   sed -i "s/database_name_here/${DB_NAME}/" /var/www/html/wp-config.php
   sed -i "s/username_here/${DB_USER}/" /var/www/html/wp-config.php
   sed -i "s/password_here/${DB_PASSWORD}/" /var/www/html/wp-config.php
+  sed -i "s/localhost/${DB_HOST}/" /var/www/html/wp-config.php 
 
   echo "wp-config.php has been created with database details."
 else
